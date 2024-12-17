@@ -328,7 +328,6 @@ display:block;
                     <button type="submit" style="background-color: #16a085; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
                 </div>
             </form>
-
 <span id="msg"></span>
 
             <a href="Phani%20Vivek%20Kondepudi.pdf" class="btn" download>Download Resume</a>
@@ -347,19 +346,18 @@ display:block;
     </script>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbw3CE1U3GTK2BvKEaYXHWXxqJwbLtM4qTCJS9Y2CnnN-p2SkxhoPxo0g7oHs5au5QkG/exec'
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxeaNan2rK0DYKLOjgwzpTSCQy_t-aVHvDtyzjaEHhsy-HKfPNMKHuJzNpAqBS443JG/exec'
   const form = document.forms['submit-to-google-sheet']
-  const msg = document.getElementById("msg")
+const msg = document.getElementById("msg")
   form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => {
-            msg.innerHTML = "Message sent successfully"
-            setTimeout(function(){
-             msg.innerHTML= ""
-             },5000)
-             form.reset()
-
+msg.innerHTML="Message sent successfully"
+setTimeout(function(){
+msg.innerHTML=""},2000)
+form.reset()
+})
       .catch(error => console.error('Error!', error.message))
   })
 </script>
