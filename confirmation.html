@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Message Sent</title>
     <style>
         body {
-            background-image: url('backgroundimage.jpeg');
-  background-size: cover;
-  background-position: center;
+            background-image: url('backgroundimage.jpeg'); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,17 +54,93 @@
         }
 
         .confirmation .button:hover {
-    background-color: #138d75;
-    transform: translateY(3px); /* Moves the button 3px downward */
-}
+            background-color: #138d75;
+            transform: translateY(3px);
+        }
 
+        /* Star Rating Container */
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            direction: rtl; /* Right-to-left for correct star order */
+        }
+
+        .stars input {
+            display: none;
+        }
+
+        .stars label {
+            font-size: 2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        /* Highlighting the stars when selected or hovered */
+        .stars input:checked ~ label,
+        .stars label:hover ~ label {
+            color: #f39c12; /* Yellow color for active stars */     
+        }
+
+        .stars label:hover {
+            color: #f39c12; /* Highlight stars on hover */
+        }
     </style>
 </head>
 <body>
     <div class="confirmation">
         <h1>Message Sent Successfully!</h1>
         <p>Thank you for getting in touch. We will respond shortly.</p>
+        
+        <!-- Star Rating Section -->
+        <div class="stars">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5">★</label>
+
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">★</label>
+
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">★</label>
+
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">★</label>
+
+            <input type="radio" id="star1" name="rating" value="1" checked>
+            <label for="star1">★</label>
+        </div>
+        
+        <!-- Submit Button for feedback -->
+        <button class="button" id="submit-feedback">Submit Feedback</button>
+        
+        <!-- Link to go back to the portfolio page -->
         <a href="index.html" class="button">Back to Portfolio</a>
     </div>
+
+    <!-- Hidden form to send the data to Google Sheets -->
+    <form name="submit-to-google-sheet" id="feedback-form" action="https://script.google.com/macros/s/AKfycbxeaNan2rK0DYKLOjgwzpTSCQy_t-aVHvDtyzjaEHhsy-HKfPNMKHuJzNpAqBS443JG/exec" method="POST">
+        <input type="hidden" name="rating" id="rating">
+    </form>
+
+    <script>
+        document.getElementById('submit-feedback').addEventListener('click', function() {
+            const rating = document.querySelector('input[name="rating"]:checked');
+            if (!rating) {
+                alert('Please select a star rating before submitting.');
+                return;
+            }
+
+            document.getElementById('rating').value = rating.value;
+
+            // Submit the form to Google Sheets
+            document.getElementById('feedback-form').submit();
+
+            // Redirect to confirmation1.html after form submission
+            setTimeout(() => {
+                window.location.href = 'confirmation1.html';
+            }, 500); // Delay to ensure form submission is initiated
+        });
+    </script>
 </body>
 </html>
