@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Confirmation</title>
+    <style>
+        body {
+            background-image: url('image2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #eaeaea; /* Light gray background */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .confirmation {
+            text-align: center;
+            background: #ffffff;
+            border: 1px solid #dcdcdc;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .confirmation h1 {
+            color: #2c3e50; /* Dark blue for a professional look */
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .confirmation p {
+            color: #7f8c8d; /* Subtle gray text */
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .confirmation .button {
+            display: inline-block;
+            background-color: #2980b9; /* Blue for professional and official look */
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .confirmation .button:hover {
+            background-color: #3498db; /* Lighter blue for hover effect */
+            transform: translateY(3px);
+        }
+
+        #thank-you-message {
+            color: #16a085; /* Green color for positive feedback */
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.4em; /* Adjusted size for better readability */
+            text-transform: uppercase; /* Thick style with uppercase */
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <p id="thank-you-message">Thank you for submitting your feedback!</p>
+
+        <a href="index.html" class="button">Back to Portfolio</a>
+    </div>
+
+    <script>
+        // Clear the stored rating from localStorage
+        localStorage.removeItem('rating');
+    </script>
+</body>
+</html>
