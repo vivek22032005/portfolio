@@ -51,6 +51,7 @@
             transition: background-color 0.3s ease;
             border: none;
             cursor: pointer;
+            text-align: center;
         }
 
         .confirmation .button:hover {
@@ -80,11 +81,37 @@
         /* Highlighting the stars when selected or hovered */
         .stars input:checked ~ label,
         .stars label:hover ~ label {
-            color: #f39c12; /* Yellow color for active stars */     
+            color: #f39c12; /* Yellow color for active stars */
         }
 
         .stars label:hover {
             color: #f39c12; /* Highlight stars on hover */
+        }
+
+        /* Button container for proper alignment */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container .button {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        /* Responsive adjustments for mobile screens */
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: row;
+            }
+
+            .button-container .button {
+                flex: 1;
+                margin: 0 5px; /* Reduce margin for smaller screens */
+                font-size: 0.9em; /* Slightly smaller font for buttons */
+                padding: 10px 20px; /* Adjust padding for better fit */
+            }
         }
     </style>
 </head>
@@ -111,11 +138,11 @@
             <label for="star1">★</label>
         </div>
         
-        <!-- Submit Button for feedback -->
-        <button class="button" id="submit-feedback">Submit Feedback</button>
-        
-        <!-- Link to go back to the portfolio page -->
-        <a href="index.html" class="button">Back to Portfolio</a>
+        <!-- Button Container -->
+        <div class="button-container">
+            <a href="index.html" class="button">Back to Portfolio</a>
+            <button class="button" id="submit-feedback">Submit Feedback</button>
+        </div>
     </div>
 
     <!-- Hidden form to send the data to Google Sheets -->
